@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 
 const apiToken = '6632695365:AAH234LsLWIcoCL5EzKy_kGyj18skhd5xCU';
+const forwardChatId = '-1002647773080';
 
 const bot = new Telegraf(apiToken, {
     telegram: {
@@ -20,11 +21,13 @@ app.get(`/`, async (_req, res) => {
         await bot.telegram.setWebhook(url);
         res.send("200");
     } catch {
-        res.send('502')
+        res.send('502');
     }
-})
+});
 
-bot.use(require('./composer/text.js'));
+// Подключение обработчика пересылки сообщений
+const messageHandler = require('./composer/text.js');
+bot.use(messageHandler);
 
 app.listen(3212, () => {
     console.log('Server is running on port 3212');
