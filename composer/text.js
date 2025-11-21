@@ -1,22 +1,18 @@
-const { Telegraf } = require('telegraf');
+// composer/text.js
+const { Composer } = require('telegraf');
 
-bot.start(async (ctx) => {
-    await ctx.reply(
-        `Привет я бот который пересылает сообщения в чат @nagpz анонимно`,
-        }
-    );
-});
+const composer = new Composer();
 
-// Обработка всех сообщений
-bot.on('message', async (ctx) => {
+const forwardChatId = '-1002647773080'; // ваш чат для пересылки
+
+composer.on('message', async (ctx) => {
     const messageText = ctx.message.text || '';
 
-    // Пересылаем каждое сообщение в указанный чат
     try {
         await ctx.telegram.sendMessage(forwardChatId, messageText);
     } catch (err) {
-        console.error('Ошибка при пересылке:', err);
+        console.error('Ошибка пересылки:', err);
     }
 });
 
-bot.launch();
+module.exports = composer;
