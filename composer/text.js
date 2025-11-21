@@ -1,7 +1,5 @@
 const { Telegraf } = require('telegraf');
 
-const forwardChatId = '-1002647773080'; // ID чата для пересылки
-
 bot.start(async (ctx) => {
     await ctx.reply(
         `Привет я бот который пересылает сообщения в чат @nagpz анонимно`,
