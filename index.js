@@ -3,7 +3,7 @@ const express = require('express');
 
 const app = express();
 
-const apiToken = '6632695365:AAH234LsLWIcoCL5EzKy_kGyj18skhd5xCU';
+const apiToken = '8575575026:AAEbWEz35zpWU4cj7eNK6xJealAuetmq2LU';
 const forwardChatId = '-1002566601942';
 
 const bot = new Telegraf(apiToken, {
